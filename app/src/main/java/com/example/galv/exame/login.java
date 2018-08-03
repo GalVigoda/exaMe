@@ -1,9 +1,20 @@
 package com.example.galv.exame;
 
 public class login {
-//try num2\// hgey
-    //hey kkdddd
-    int y = 5;
+
+  //  boolean status= false;
+    private String firstName;
+    private String lastName;
+    private String EMAIL_PATTERN =
+                    "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+    private String password;
+
+
+
+
+
+
 
     //good-Luck for us ;)
 
