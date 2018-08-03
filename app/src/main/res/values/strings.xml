@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">exaMe</string>
+    <string name="Login">Login</string>
 </resources>
