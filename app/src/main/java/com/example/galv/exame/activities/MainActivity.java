@@ -1,7 +1,9 @@
-package com.example.galv.exame;
+package com.example.galv.exame.activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.galv.exame.R;
 
 public class MainActivity extends AppCompatActivity {
 //bla bla bla

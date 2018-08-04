@@ -1,4 +1,4 @@
-package com.example.galv.exame;
+package com.example.galv.exame.entities;
 
 public class Question {
 
