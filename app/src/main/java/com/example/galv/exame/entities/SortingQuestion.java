@@ -1,6 +1,6 @@
 package com.example.galv.exame.entities;
 
-public class sortingQuestion extends Question {
+public class SortingQuestion extends Question {
 
 
     private String correctOrder[];

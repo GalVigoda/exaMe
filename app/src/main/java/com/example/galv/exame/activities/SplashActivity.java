@@ -53,6 +53,10 @@ public class SplashActivity extends AppCompatActivity {
 
     private void GoToMainActivity(){
         Logger.ReportError("SplashActivity.GoToMainActivity", "GoToMainActivity()");
+        Intent intent = new Intent(this, MainActivity.class);
+
+
+        startActivity(intent);
     }
 
     @Override

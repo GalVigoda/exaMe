@@ -1,6 +1,6 @@
 package com.example.galv.exame.entities;
 
-public class americanQuestion extends Question {
+public class AmericanQuestion extends Question {
 
     private String correctAnswer;
 }
