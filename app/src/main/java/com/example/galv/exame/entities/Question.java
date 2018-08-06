@@ -7,6 +7,6 @@ public class Question {
     private int questionNumber;
     private String answers[];
     private int tags[];
-    //type
+
 
 }
