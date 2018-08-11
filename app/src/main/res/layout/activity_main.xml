@@ -14,7 +14,9 @@
         android:layout_alignParentStart="true"
         app:menu="@menu/navigations_items"
         app:itemBackground="@color/colorPrimary"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"        >
+        app:itemIconTint="@color/nav_item_color"
+        app:itemTextColor="@color/nav_item_color"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
         </android.support.design.widget.BottomNavigationView>
 
@@ -23,7 +25,7 @@
         android:layout_width="383dp"
         android:layout_height="match_parent"
         android:layout_above="@id/main_navigation"
-        android:layout_alignParentStart="false"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginBottom="-56dp"
         android:layout_marginStart="41dp"

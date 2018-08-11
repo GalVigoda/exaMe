@@ -5,12 +5,12 @@
 
     <item
         android:id="@+id/navigatin_home"
-        android:icon="@drawable/iconhomepage80"
+        android:icon="@drawable/home152"
         android:title="@string/nevigation_home" />
 
     <item
         android:id="@+id/navigatin_new"
-        android:icon="@drawable/icons8new80"
+        android:icon="@drawable/new152"
         android:title="@string/nevigation_new" />
     <item
         android:id="@+id/navigatin__done"
