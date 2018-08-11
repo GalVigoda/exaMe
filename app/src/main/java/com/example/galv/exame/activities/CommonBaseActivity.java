@@ -1,16 +1,11 @@
 package com.example.galv.exame.activities;
 
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class CommonBaseActivity extends AppCompatActivity {
-
-
-
-
 
 
 
