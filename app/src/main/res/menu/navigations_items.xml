@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigatin_home"
+        android:icon="@drawable/iconhomepage80"
+        android:title="@string/nevigation_home" />
+    <item
+        android:id="@+id/navigatin_new"
+        android:icon="@drawable/icons8new80"
+        android:title="@string/nevigation_new" />
+    <item
+        android:id="@+id/navigatin__done"
+        android:icon="@drawable/iconscheckmark80"
+        android:title="@string/nevigation_done" />
+    <item
+        android:id="@+id/navigatin_statistic"
+        android:icon="@drawable/icons8studentmale80"
+        android:title="@string/nevigation_statistic" />
+</menu>

@@ -1,67 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    tools:context=".activities.MainActivity">
 
-    <fragment
-        android:id="@+id/fr1"
-        android:name="com.example.galv.homeFragment"
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/main_navigation"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            app:menu="@menu/navigations_items">
+
+        app:menu:
+        </android.support.design.widget.BottomNavigationView>
+
+    <FrameLayout
+        android:id="@+id/main_frame"
         android:layout_width="match_parent"
-        android:layout_marginTop="1dp"
-        android:layout_height="191dp"
-        android:layout_alignParentBottom="true"
+        android:layout_height="match_parent"
+        android:layout_above="@id/main_navigation"
         android:layout_alignParentStart="true"
-        android:layout_marginBottom="50dp"
-        android:layout_weight="10"></fragment>
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="21dp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_weight="7"
-        android:gravity="bottom"
-        android:orientation="horizontal" >
+    </FrameLayout>
 
 
-        <Button
-            android:id="@+id/homeButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/homeFragment"
-            android:drawableTop="@drawable/iconhomepage80"/>
-
-
-
-        <Button
-            android:id="@+id/button10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/newExamFragment"
-            android:drawableTop="@drawable/icons8new80"/>
-
-        <Button
-            android:autoSizeStepGranularity="2dp"
-            android:id="@+id/newExam"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/finishedFragment"
-            android:drawableTop="@drawable/iconscheckmark80"/>
-
-        <Button
-            android:id="@+id/button9"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/statisticFragment"
-            android:drawableTop="@drawable/icons8studentmale80"/>
-    </LinearLayout>
-
-
-
-
-</LinearLayout>
+</RelativeLayout>

@@ -2,17 +2,15 @@ package com.example.galv.exame.activities;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 
-import com.example.galv.exame.R;
 import com.example.galv.exame.handlers.AuthenticationHandler;
 import com.example.galv.exame.handlers.Logger;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
@@ -74,6 +72,7 @@ public class SplashActivity extends AppCompatActivity {
             } catch (ApiException e) {
                 // Google Sign In failed, update UI appropriately
                 Logger.ReportError("SplashActivity.onCreate", "Google sign in failed " + e.getMessage());
+                e.printStackTrace();
                 UpdateUI(null);
             }
         }
