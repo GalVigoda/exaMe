@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/misorim"
+    android:background="@drawable/bord"
     tools:context=".activities.newTestFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -11,8 +11,11 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
+        android:layout_marginLeft="6dp"
+        android:layout_marginTop="9dp"
+        android:fontFamily="@font/lemon"
         android:text="@string/new_fragment"
         android:textColor="@color/black"
-        android:textSize="36sp" />
+        android:textSize="30sp" />
 
 </FrameLayout>
