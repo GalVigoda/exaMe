@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Question {
+    public static final int QUESTION_TYPE_AMERICAN = 1;
+    public static final int QUESTION_TYPE_MISSING_WORDS = 2;
+    public static final int QUESTION_TYPE_SORTING = 3;
 
     private String text;
     private int type;
     private int questionNumber;
     private List<Answer> answers;
     private List<Tag> tags;
+    private String correctAnswer;
 
     public Question() {
     }
@@ -20,6 +24,7 @@ public class Question {
         this.questionNumber = questionNumber;
         this.answers = new ArrayList<>();
         this.tags = new ArrayList<>();
+        this.correctAnswer = "";
     }
 
     public String getText() {
@@ -68,6 +73,14 @@ public class Question {
 
     public void addAnswer (Answer answer){
         this.answers.add(answer);
+    }
+
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
+
+    public void setCorrectAnswer(String correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
     @Override

@@ -14,7 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
-
+    public static final boolean TESTING_MODE = true;
     private AuthenticationHandler mAuthenticationHandler;
     private static final int RC_SIGN_IN = 9001;
 
@@ -51,8 +51,7 @@ public class SplashActivity extends AppCompatActivity {
 
     private void GoToMainActivity(){
         Logger.ReportError("SplashActivity.GoToMainActivity", "GoToMainActivity()");
-        Intent intent = new Intent(this, MainActivity.class);
-
+        Intent intent = new Intent(this, TESTING_MODE ? TestingsActivity.class : MainActivity.class);
 
         startActivity(intent);
     }

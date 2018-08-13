@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
+    private String key;
     private String title;
     private int timeForTimer; //arr(?)
     private List<Question> questions;
@@ -43,6 +44,14 @@ public class Exam {
 
     public void addQuestion(Question question){
         questions.add(question);
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     @Override

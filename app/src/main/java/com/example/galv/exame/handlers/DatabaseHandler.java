@@ -34,7 +34,7 @@ public class DatabaseHandler {
     }
 
     public void SaveExam(Exam exam){
-        mFirebaseDatabase.child("exam").setValue(exam);
+        mFirebaseDatabase.child("exam").push().setValue(exam);
     }
 
     public void SaveQuestion (Question question){

@@ -11,8 +11,11 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.galv.exame.R;
+import com.example.galv.exame.handlers.ExamsHandler;
+import com.example.galv.exame.handlers.Logger;
+import com.example.galv.exame.handlers.UpdateFor;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends CommonBaseActivity {
 
 
     private BottomNavigationView btNavigation;
@@ -21,13 +24,13 @@ public class MainActivity extends AppCompatActivity {
     private doneTestFragment doneTestFragment;
     private newTestFragment newTestFragment;
     private statisticFragment statisticFragment;
-
+    private ExamsHandler mExamsHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        mExamsHandler = new ExamsHandler(getUserId(), this);
 
         frMain=(FrameLayout) findViewById(R.id.main_frame);
         btNavigation=(BottomNavigationView)findViewById(R.id.main_navigation);
@@ -81,4 +84,10 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    @Override
+    public void UpdateUi(UpdateFor updateFor){
+        Logger.ReportError("TestingsActivity.UpdateUi:", "Got Update for: " + updateFor.name() );
+
+    }
 }
