@@ -14,7 +14,7 @@ public class Question {
     private List<Answer> answers;
     private List<Tag> tags;
     private String correctAnswer;
-
+    private String explanation;
     public Question() {
     }
 
@@ -25,6 +25,7 @@ public class Question {
         this.answers = new ArrayList<>();
         this.tags = new ArrayList<>();
         this.correctAnswer = "";
+        this.explanation = "";
     }
 
     public String getText() {
@@ -83,6 +84,14 @@ public class Question {
         this.correctAnswer = correctAnswer;
     }
 
+    public String getExplanation() {
+        return explanation;
+    }
+
+    public void setExplanation(String explanation) {
+        this.explanation = explanation;
+    }
+
     @Override
     public String toString() {
         return "Question{" +
@@ -91,6 +100,8 @@ public class Question {
                 ", questionNumber=" + questionNumber +
                 ", answers=" + answers +
                 ", tags=" + tags +
+                ", correctAnswer='" + correctAnswer + '\'' +
+                ", explanation='" + explanation + '\'' +
                 '}';
     }
 }
