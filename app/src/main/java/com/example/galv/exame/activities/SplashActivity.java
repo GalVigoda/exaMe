@@ -14,7 +14,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseUser;
 
 public class SplashActivity extends AppCompatActivity {
-    public static final boolean TESTING_MODE = true;
+    public static final boolean TESTING_MODE = false;
     private AuthenticationHandler mAuthenticationHandler;
     private static final int RC_SIGN_IN = 9001;
 

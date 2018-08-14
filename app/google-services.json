@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "890665443902-r4mkt1b8foqi3fngrgi496iql6dkqogr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.galv.exame",
+            "certificate_hash": "2d2952c26e74b0c60f38488d55e48d5bc4fce8a9"
+          }
+        },
+        {
           "client_id": "890665443902-7mf32rfaq2f6ebpvdpqerdudhpuiqggp.apps.googleusercontent.com",
           "client_type": 3
         }
