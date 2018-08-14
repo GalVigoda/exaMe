@@ -19,11 +19,6 @@
         <activity android:name=".activities.MainActivity">
 
         </activity>
-        <activity
-            android:name=".entities.login"
-            android:label="@string/title_activity_login"
-            android:theme="@style/AppTheme.NoActionBar" >
-    </activity>
 
         <activity
             android:name=".activities.SplashActivity"
@@ -32,8 +27,9 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-    </activity>
+        </activity>
 
+        <activity android:name=".activities.TestingsActivity"/>
 
         <meta-data
             android:name="preloaded_fonts"

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.example.galv.exame.handlers.AuthenticationHandler;
 import com.example.galv.exame.handlers.Logger;
@@ -21,13 +22,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_splash);
-        String email = "naordavid2@gmail.com";
-        String password = "123456";
         mAuthenticationHandler = new AuthenticationHandler(this);
-        //mAuthenticationHandler.SignUpWithEmailAndPassword(email, password);
-        //mAuthenticationHandler.SignInWithEmailAndPassword(email, password);
-        mAuthenticationHandler.SignOut();
+
         FirebaseUser user = mAuthenticationHandler.GetCurrentUser();
         if (user == null) {
             Logger.ReportError("SplashActivity.onCreate", "user not exists");
@@ -82,6 +78,7 @@ public class SplashActivity extends AppCompatActivity {
             GoToMainActivity();
         }else{
             Logger.ReportError("SplashActivity.UpdateUI", "Got null user - exit");
+            Toast.makeText(this, "Authentication failed - Contact support", Toast.LENGTH_LONG);
             finish();
         }
     }
