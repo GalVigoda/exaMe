@@ -18,4 +18,10 @@
         android:textColor="@color/black"
         android:textSize="30sp" />
 
+    <Button
+        android:id="@+id/startNewTest"
+        android:layout_width="343dp"
+        android:layout_height="283dp"
+        android:text="start- only for check" />
+
 </FrameLayout>
