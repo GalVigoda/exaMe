@@ -5,17 +5,16 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.galv.exame.R;
 
-public class newExamFragment {
+public class ExamActivity extends AppCompatActivity{
 
-
-    public class MainActivity extends AppCompatActivity {
-
-        @Override
+         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.new_exam_fragment);
 
         }
-    }
+
+
+
 
 }

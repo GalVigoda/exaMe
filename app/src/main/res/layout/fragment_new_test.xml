@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bord"
+    android:layoutDirection="ltr"
     tools:context=".activities.newTestFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -18,10 +19,15 @@
         android:textColor="@color/black"
         android:textSize="30sp" />
 
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <Button
+        android:layout_marginTop="150dp"
         android:id="@+id/startNewTest"
-        android:layout_width="343dp"
-        android:layout_height="283dp"
+        android:layout_width="167dp"
+        android:layout_height="98dp"
         android:text="start- only for check" />
 
 </FrameLayout>

@@ -16,7 +16,7 @@ public class Exam {
         this.title = title;
         this.timeForTimer = timeForTimer;
         this.questions = new ArrayList<>();
-    }
+}
 
     public String getTitle() {
         return title;

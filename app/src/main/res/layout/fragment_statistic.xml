@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.statisticFragment">
+    tools:context=".activities.statisticFragment"
+    android:layoutDirection="ltr">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
