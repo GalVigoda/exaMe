@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Exam {
+    public static final int QUESTION_TYPE_REGULAR   = 0;
+    public static final int QUESTION_TYPE_AMERICAN  = 1;
+    public static final int QUESTION_TYPE_SORTING   = 2;
+
     private String key;
     private String title;
     private int timeForTimer; //arr(?)
@@ -16,7 +20,7 @@ public class Exam {
         this.title = title;
         this.timeForTimer = timeForTimer;
         this.questions = new ArrayList<>();
-}
+    }
 
     public String getTitle() {
         return title;
