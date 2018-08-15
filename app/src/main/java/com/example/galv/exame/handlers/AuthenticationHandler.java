@@ -1,16 +1,17 @@
 package com.example.galv.exame.handlers;
-import com.example.galv.exame.R;
-import com.example.galv.exame.activities.*;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.example.galv.exame.R;
+import com.example.galv.exame.activities.SplashActivity;
+import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -20,19 +21,28 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 public class AuthenticationHandler {
-    private Activity mContext;
+    private AppCompatActivity mContext;
     private FirebaseAuth mAuth;
-    private GoogleSignInClient mGoogleSignInClient;
+    //private GoogleSignInClient mGoogleSignInClient;
+    private GoogleApiClient mGoogleApiClient;
 
-    public AuthenticationHandler(Activity context){
+    public AuthenticationHandler(final AppCompatActivity context){
         this.mContext = context;
 
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(mContext.getString(R.string.default_web_client_id))
+                //.requestIdToken("890665443902-7mf32rfaq2f6ebpvdpqerdudhpuiqggp.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
-        mGoogleSignInClient = GoogleSignIn.getClient(mContext, gso);
-
+        //mGoogleSignInClient = GoogleSignIn.getClient(mContext, gso);
+        mGoogleApiClient = new GoogleApiClient.Builder(mContext)
+                .enableAutoManage(mContext, new GoogleApiClient.OnConnectionFailedListener() {
+                    @Override
+                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                        Toast.makeText(mContext, "Error while getting google api connection", Toast.LENGTH_LONG);
+                    }
+                })
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso).build();
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -77,7 +87,8 @@ public class AuthenticationHandler {
     }
 
     public Intent GetGoogleLoginIntent(){
-        return mGoogleSignInClient.getSignInIntent();
+        //return mGoogleSignInClient.getSignInIntent();
+        return  Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
     }
 
     public void AuthWithGoogleAccount (GoogleSignInAccount account){
