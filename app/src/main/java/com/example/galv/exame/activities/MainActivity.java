@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-
 import com.example.galv.exame.R;
 import com.example.galv.exame.handlers.ExamsHandler;
 import com.example.galv.exame.handlers.Logger;

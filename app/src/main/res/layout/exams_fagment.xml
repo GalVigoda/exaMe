@@ -15,7 +15,7 @@
         android:layout_marginStart="164dp"
         android:layout_marginTop="120dp"
         android:text="math"
-        android:textAppearance="@android:style/TextAppearance.SuggestionHighlight"
+
         android:textSize="30sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,7 +30,7 @@
         android:layout_marginStart="164dp"
         android:layout_marginTop="192dp"
         android:text="12:14"
-        android:textAppearance="@android:style/TextAppearance.SuggestionHighlight"
+
         android:textSize="30sp"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
@@ -64,7 +64,7 @@
 
     <Button
         android:id="@+id/button4"
-        style="@android:style/Widget.DeviceDefault.Button"
+
         android:layout_width="132dp"
         android:layout_height="52dp"
         android:layout_marginBottom="36dp"

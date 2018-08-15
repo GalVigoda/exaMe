@@ -23,7 +23,9 @@ import com.google.firebase.auth.GoogleAuthProvider;
 public class AuthenticationHandler {
     private AppCompatActivity mContext;
     private FirebaseAuth mAuth;
+
     //private GoogleSignInClient mGoogleSignInClient;
+
     private GoogleApiClient mGoogleApiClient;
 
     public AuthenticationHandler(final AppCompatActivity context){
@@ -34,7 +36,9 @@ public class AuthenticationHandler {
                 //.requestIdToken("890665443902-7mf32rfaq2f6ebpvdpqerdudhpuiqggp.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
+
         //mGoogleSignInClient = GoogleSignIn.getClient(mContext, gso);
+
         mGoogleApiClient = new GoogleApiClient.Builder(mContext)
                 .enableAutoManage(mContext, new GoogleApiClient.OnConnectionFailedListener() {
                     @Override
@@ -46,7 +50,7 @@ public class AuthenticationHandler {
         mAuth = FirebaseAuth.getInstance();
     }
 
-    //do sign up
+    //do sign up --BACKUP FOR GOOGLE AUTH
     public void SignUpWithEmailAndPassword(String email, String password){
         mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(mContext, new OnCompleteListener<AuthResult>() {
             @Override
@@ -62,7 +66,7 @@ public class AuthenticationHandler {
         SignInWithEmailAndPassword(email, password);
     }
 
-    // do login
+    // do login --BACKUP FOR GOOGLE AUTH
     public void SignInWithEmailAndPassword(String email, String password){
         mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(mContext, new OnCompleteListener<AuthResult>() {
             @Override
@@ -77,6 +81,7 @@ public class AuthenticationHandler {
             }
         });
     }
+
     //do logout
     public void SignOut(){
         mAuth.signOut();
@@ -87,7 +92,9 @@ public class AuthenticationHandler {
     }
 
     public Intent GetGoogleLoginIntent(){
+
         //return mGoogleSignInClient.getSignInIntent();
+
         return  Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
     }
 

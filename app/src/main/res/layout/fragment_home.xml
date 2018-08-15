@@ -4,9 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.homeFragment"
-    android:layoutDirection="ltr"
-    android:background="@drawable/pexelsphoto281260">
-
+    android:layoutDirection="ltr">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

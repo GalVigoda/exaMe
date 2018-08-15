@@ -11,8 +11,7 @@ public class CommonBaseActivity extends AppCompatActivity {
 
 
     public String getUserId(){
-        FirebaseUser user = getUser();
-        return user != null ? user.getUid() : "";
+        return getUser().getUid();
     }
 
     public FirebaseUser getUser(){

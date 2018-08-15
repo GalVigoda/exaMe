@@ -164,7 +164,6 @@ public class ExamsHandler {
                 Logger.ReportInfo("ExamsHandler.GetExamByKey", "got exam data, exam key: " + dataSnapshot.getKey());
                 Exam exam = dataSnapshot.getValue(Exam.class);
                 AddExamData(dataSnapshot.getKey(), exam);
-                context.UpdateUi(UpdateFor.UPDATE_FOR_ALL);
             }
 
             @Override
@@ -226,20 +225,11 @@ public class ExamsHandler {
         return list;
     }
 
-    public String SaveExam(Exam exam){
+    public void SaveExam(Exam exam){
         String key = mFirebaseDatabase.child("exam").push().getKey();
         exam.setKey(key);
         Map<String, Object> map = new HashMap<>();
         map.put("/exam/" + key, exam);
         mFirebaseDatabase.updateChildren(map);
-        return key;
-    }
-
-    public Exam GetExamDetailsByKey(String key){
-        return examsData.get(key);
-    }
-
-    public void SaveUserNewExam(final UserExam exam){
-        mFirebaseDatabase.child("userNewExams").child(mUId).push().setValue(exam);
     }
 }
