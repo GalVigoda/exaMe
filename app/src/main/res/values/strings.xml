@@ -44,4 +44,8 @@
     <string name="new_fragment">WAITTING TESTS :</string>
     <string name="statistic_fragment">Hello statistic fragment</string>
 
+
+    <!-- Testing activity strings -->
+    <string name="create_exams_btn">Create Exams</string>
+
 </resources>

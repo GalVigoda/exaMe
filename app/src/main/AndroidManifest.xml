@@ -18,6 +18,7 @@ package="com.example.galv.exame">
     android:theme="@style/AppTheme">
     <activity android:name=".activities.MainActivity">
 
+<<<<<<< HEAD
     </activity>
     <activity
         android:name=".entities.login"
@@ -37,6 +38,20 @@ package="com.example.galv.exame">
     <activity
         android:name=".activities.ExamActivity">
     </activity>
+=======
+        </activity>
+
+        <activity
+            android:name=".activities.SplashActivity"
+            android:theme="@style/SplashTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".activities.TestingsActivity"/>
+>>>>>>> c27e6e6c4b32bf32acc68737fc8b56bd868b0c95
 
     <meta-data
         android:name="preloaded_fonts"
