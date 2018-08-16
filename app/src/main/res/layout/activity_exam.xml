@@ -6,4 +6,4 @@
     tools:context=".activities.ExamActivity"
     android:id="@+id/exam_activity_main_fragment">
 
-</FrameLayout>
+    </FrameLayout>

@@ -20,14 +20,14 @@
         android:textSize="30sp" />
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
     <Button
-        android:layout_marginTop="150dp"
         android:id="@+id/startNewTest"
         android:layout_width="167dp"
         android:layout_height="98dp"
+        android:layout_marginTop="150dp"
         android:text="start- only for check" />
 
 </FrameLayout>

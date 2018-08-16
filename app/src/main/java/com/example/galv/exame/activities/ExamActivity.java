@@ -3,8 +3,6 @@ package com.example.galv.exame.activities;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.widget.FrameLayout;
 
 import com.example.galv.exame.R;
 import com.example.galv.exame.entities.Answer;
@@ -19,13 +17,14 @@ public class ExamActivity extends CommonBaseActivity{
     private ExamMainFragment examMainFragment;
     private ExamOpeningFragment examOpeningFragment;
 
+
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         //setContentView(R.layout.new_exam_fragment);
         setContentView(R.layout.activity_exam);
-        mainFragmentManager = getSupportFragmentManager();
+         mainFragmentManager = getSupportFragmentManager();
 
         examMainFragment = new ExamMainFragment();
         examMainFragment.setExam(getExam());
