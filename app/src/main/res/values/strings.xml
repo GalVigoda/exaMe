@@ -39,7 +39,7 @@
     <string name="nevigation_statistic">STATISTIC</string>
 
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="home_fragment">Hello home fragment</string>
+    <string name="home_fragment">user e-Mail</string>
     <string name="done_fragment">Hello done fragment</string>
     <string name="new_fragment">WAITTING TESTS :</string>
     <string name="statistic_fragment">Hello statistic fragment</string>

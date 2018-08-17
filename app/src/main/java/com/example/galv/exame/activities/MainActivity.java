@@ -1,6 +1,7 @@
 package com.example.galv.exame.activities;
 
 
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
+
 import com.example.galv.exame.R;
 import com.example.galv.exame.handlers.ExamsHandler;
 import com.example.galv.exame.handlers.Logger;
@@ -26,8 +28,11 @@ public class MainActivity extends CommonBaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       // requestWindowFeature(Window.FEATURE_NO_TITLE);
+
         mExamsHandler = new ExamsHandler(getUserId(), this);
 
         frMain=(FrameLayout) findViewById(R.id.main_frame);
@@ -46,21 +51,29 @@ public class MainActivity extends CommonBaseActivity {
 
                 switch(menuItem.getItemId()) {
                     case R.id.navigatin_home:
+                        getSupportActionBar().setTitle("exaMe");
+                       getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.design_default_color_primary)));
                         btNavigation.setItemBackgroundResource(R.color.design_default_color_primary);
                         setFragmet(homeFragment);
                         return true;
 
                     case R.id.navigatin_new:
+                        getSupportActionBar().setTitle("new Tests");
+                        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.red)));
                         btNavigation.setItemBackgroundResource(R.color.red);
                         setFragmet(newTestFragment);
                         return true;
 
                     case R.id.navigatin__done:
+                        getSupportActionBar().setTitle("Done Tests");
+                        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.green)));
                         btNavigation.setItemBackgroundResource(R.color.green);
                         setFragmet(doneTestFragment);
                         return true;
 
                     case R.id.navigatin_statistic:
+                        getSupportActionBar().setTitle("Statistic");
+                        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.yellow)));
                         btNavigation.setItemBackgroundResource(R.color.yellow);
                         setFragmet(statisticFragment);
                         return true;
