@@ -189,7 +189,7 @@ public class QuestionFragment extends Fragment {
     }
 
     private void checkAnswer(){
-        isCorrectAnswer = this.answer == mQuestion.getCorrectAnswer();
+        isCorrectAnswer = this.answer.equals(mQuestion.getCorrectAnswer());
     }
 
     public void updateAnswer(Answer answer){
@@ -237,7 +237,7 @@ public class QuestionFragment extends Fragment {
         TableRow.LayoutParams params = new TableRow.LayoutParams();
         params.span = 2;
         explanaionTextView.setLayoutParams(params);
-        explanaionTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+        explanaionTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
         explanaionTextView.setText(mQuestion.getExplanation());
         explanaionRow.addView(explanaionTextView);
         tableLayout.addView(explanaionRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
@@ -252,5 +252,19 @@ public class QuestionFragment extends Fragment {
         TextView ans = answerTextMap.get(index);
         ans.setTextSize(TypedValue.COMPLEX_UNIT_SP, 30);
         ans.setTypeface(ans.getTypeface(), Typeface.BOLD_ITALIC);
+    }
+
+    public void showText(String text){
+        TableRow explanaionRow = new TableRow(getActivity());
+        explanaionRow.setLayoutParams(new TableRow.LayoutParams(TableRow.LayoutParams.MATCH_PARENT, TableRow.LayoutParams.WRAP_CONTENT));
+
+        TextView explanaionTextView = new TextView(getActivity());
+        TableRow.LayoutParams params = new TableRow.LayoutParams();
+        params.span = 2;
+        explanaionTextView.setLayoutParams(params);
+        explanaionTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 25);
+        explanaionTextView.setText(text);
+        explanaionRow.addView(explanaionTextView);
+        tableLayout.addView(explanaionRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
     }
 }
