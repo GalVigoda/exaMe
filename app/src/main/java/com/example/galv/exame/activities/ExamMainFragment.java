@@ -82,7 +82,7 @@ public class ExamMainFragment extends Fragment {
             questionFragmentsMap.put(i, f);
 
             Button b = new Button(getActivity());
-            b.setText("" + i);
+            b.setText(Integer.toString(i));
             b.setId(i);
             b.setBackgroundResource(R.drawable.ic_action_question_btn_regular);
             b.setOnClickListener(new View.OnClickListener() {
