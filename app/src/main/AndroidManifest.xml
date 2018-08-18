@@ -10,11 +10,12 @@ package="com.example.galv.exame">
 <uses-permission android:name="android.permission.INTERNET" />
 
 <application
+
     android:allowBackup="true"
     android:icon="@drawable/logo4"
     android:label="@string/app_name"
     android:roundIcon="@drawable/logo4"
-    android:supportsRtl="true"
+    android:supportsRtl="false"
     android:theme="@style/AppTheme">
 
         <activity

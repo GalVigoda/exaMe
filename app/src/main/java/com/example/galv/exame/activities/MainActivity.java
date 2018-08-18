@@ -58,7 +58,7 @@ public class MainActivity extends CommonBaseActivity {
                         return true;
 
                     case R.id.navigatin_new:
-                        getSupportActionBar().setTitle("new Tests");
+                        getSupportActionBar().setTitle("New Tests");
                         getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.red)));
                         btNavigation.setItemBackgroundResource(R.color.red);
                         setFragmet(newTestFragment);
@@ -89,7 +89,6 @@ public class MainActivity extends CommonBaseActivity {
     private void setFragmet(Fragment f1) {
 
         FragmentTransaction FragmentTransaction = getSupportFragmentManager().beginTransaction();
-
         FragmentTransaction.replace(R.id.main_frame,f1);
         FragmentTransaction.commit();
 
