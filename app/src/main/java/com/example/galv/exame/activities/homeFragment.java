@@ -19,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
  */
 public class homeFragment extends Fragment {
 
-    private TextView userEmail, userName, userExtra;
+    private TextView userEmail, userName;
     private ImageView imageView;
     FirebaseAuth mAuth;
     FirebaseUser user;
@@ -65,16 +65,6 @@ public class homeFragment extends Fragment {
     }
         //  FirebaseUser user = ((CommonBaseActivity)getActivity()).getUser();
 
-
-//GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(getActivity());
-//if (acct != null) {
-//  String personName = acct.getDisplayName();
-//  String personGivenName = acct.getGivenName();
-//  String personFamilyName = acct.getFamilyName();
-//  String personEmail = acct.getEmail();
-//  String personId = acct.getId();
-//  Uri personPhoto = acct.getPhotoUrl();
-//}
 
 
 }
