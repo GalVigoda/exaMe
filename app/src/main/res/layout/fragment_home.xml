@@ -69,46 +69,38 @@
         android:id="@+id/constraintLayout3"
         android:layout_width="361dp"
         android:layout_height="305dp"
-        android:layout_marginTop="4dp"
         android:background="@drawable/border_style2"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout2"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="0dp">
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="107dp"
-            android:layout_height="113dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginStart="212dp"
-            android:layout_marginTop="36dp"
-            android:src="@drawable/iconscheckmark80"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="107dp"
-            android:layout_height="113dp"
-            android:layout_marginStart="124dp"
-            android:layout_marginTop="192dp"
-            android:src="@drawable/icons8studentmale80"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="107dp"
-            android:layout_height="113dp"
-            android:layout_marginEnd="212dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="28dp"
-            android:src="@drawable/icons8new80"
-            app:layout_constraintEnd_toStartOf="@+id/imageView4"
-            app:layout_constraintHorizontal_bias="0.0"
+            android:layout_width="81dp"
+            android:layout_height="85dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:src="@drawable/speechbubble"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/numberOfNewTests"
+            android:layout_width="wrap_content"
+            android:layout_height="62dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:text="2"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
+            app:layout_constraintEnd_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toStartOf="@+id/imageView2"
+            app:layout_constraintTop_toTopOf="@+id/imageView2" />
+
+
     </android.support.constraint.ConstraintLayout>
 
 

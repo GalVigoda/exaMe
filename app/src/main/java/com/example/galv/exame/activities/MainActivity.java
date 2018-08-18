@@ -51,7 +51,7 @@ public class MainActivity extends CommonBaseActivity {
 
                 switch(menuItem.getItemId()) {
                     case R.id.navigatin_home:
-                        getSupportActionBar().setTitle("exaMe");
+                       getSupportActionBar().setTitle("exaMe");
                        getSupportActionBar().setBackgroundDrawable(new ColorDrawable(getResources().getColor(R.color.design_default_color_primary)));
                         btNavigation.setItemBackgroundResource(R.color.design_default_color_primary);
                         setFragmet(homeFragment);

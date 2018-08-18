@@ -1,6 +1,7 @@
 package com.example.galv.exame.activities;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -19,8 +20,9 @@ import com.google.firebase.auth.FirebaseUser;
  */
 public class homeFragment extends Fragment {
 
-    private TextView userEmail, userName;
+    private TextView userEmail, userName,numberOfNewTests;
     private ImageView imageView;
+    private ImageView imageView2;
     FirebaseAuth mAuth;
     FirebaseUser user;
 
@@ -37,32 +39,50 @@ public class homeFragment extends Fragment {
         View view = inflater.inflate(com.example.galv.exame.R.layout.fragment_home, container, false);
         findViewById(view);
         buildComponents(view);
-
+        setOnClick();
 
         return view;
     }
 
-    private void findViewById(View view) {
-        user = ((CommonBaseActivity) getActivity()).getUser();
-        mAuth = FirebaseAuth.getInstance();
-        userEmail = view.findViewById(R.id.textHome);
-        userName = view.findViewById(R.id.textHome2);
+    private void setOnClick() {
 
-       // userExtra= view.findViewById(R.id.textHome3);
+        numberOfNewTests.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                moveFromFramentToNewActivity();
+            }
+        });
     }
 
-    private void buildComponents(View view) {
-
-
-        imageView = view.findViewById(R.id.imageView3);
-        user = mAuth.getCurrentUser();
-        Glide.with(this)
-                .load(user.getPhotoUrl())
-                .into(imageView);
-        userEmail.setText(user.getEmail());
-        userName.setText(user.getDisplayName());
-       // userExtra.setText(user.get());
+    private void moveFromFramentToNewActivity() {
+        Intent intent = new Intent(getActivity(), newTestFragment.class);
+        startActivity(intent);
     }
+
+
+    private void findViewById (View view){
+            user = ((CommonBaseActivity) getActivity()).getUser();
+            mAuth = FirebaseAuth.getInstance();
+            userEmail = view.findViewById(R.id.textHome);
+            userName = view.findViewById(R.id.textHome2);
+            numberOfNewTests = view.findViewById(R.id.numberOfNewTests);
+            imageView2 = view.findViewById(R.id.imageView2);
+
+            // userExtra= view.findViewById(R.id.textHome3);
+        }
+
+        private void buildComponents (View view){
+
+
+            imageView = view.findViewById(R.id.imageView3);
+            user = mAuth.getCurrentUser();
+            Glide.with(this)
+                    .load(user.getPhotoUrl())
+                    .into(imageView);
+            userEmail.setText(user.getEmail());
+            userName.setText(user.getDisplayName());
+            // userExtra.setText(user.get());
+        }
         //  FirebaseUser user = ((CommonBaseActivity)getActivity()).getUser();
 
 
