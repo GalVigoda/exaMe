@@ -17,7 +17,6 @@ import com.example.galv.exame.handlers.UpdateFor;
 
 public class MainActivity extends CommonBaseActivity {
 
-
     private BottomNavigationView btNavigation;
     private FrameLayout frMain;
     private homeFragment homeFragment;
