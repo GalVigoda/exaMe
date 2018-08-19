@@ -6,6 +6,7 @@ import java.util.List;
 public class UserExam {
     private String examKey;
     private List<UserQuestion> userQuestions;
+    private float grade;
 
     public UserExam() {
         this.examKey = "";
@@ -31,6 +32,14 @@ public class UserExam {
 
     public void setUserQuestions(List<UserQuestion> userQuestions) {
         this.userQuestions = userQuestions;
+    }
+
+    public float getGrade() {
+        return grade;
+    }
+
+    public void setGrade(float grade) {
+        this.grade = grade;
     }
 
     public void addQuestion(UserQuestion userQuestion){
