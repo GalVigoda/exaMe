@@ -1,7 +1,6 @@
 package com.example.galv.exame.activities;
 
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -14,14 +13,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.example.galv.exame.R;
 import com.example.galv.exame.entities.Exam;
 import com.example.galv.exame.entities.Question;
 import com.example.galv.exame.handlers.Logger;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -35,6 +33,7 @@ public class ExamMainFragment extends Fragment {
     private Exam                            exam;
 
     private int                             currentQuestionNum;
+    private TextView tvTimeForTimer;
 
     public ExamMainFragment() {
     }
@@ -54,7 +53,7 @@ public class ExamMainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_exam_main, container, false);
-
+        tvTimeForTimer =  rootView.findViewById(R.id.tvTimer1);
         buttonsScrollView = (HorizontalScrollView) rootView.findViewById(R.id.exam_main_questions_horizontal_button_scroll);
 
         init();
@@ -110,5 +109,10 @@ public class ExamMainFragment extends Fragment {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.exam_main_question_frame, qf);
         transaction.commit();
+    }
+
+    public void updateText(String timeLeftText) {
+        tvTimeForTimer.setText(timeLeftText);
+        int stam =1;
     }
 }

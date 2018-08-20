@@ -100,7 +100,8 @@ public class QuestionFragment extends Fragment {
         buildAnswersComponents(view);
     }
 
-    private void buildAnswersComponents(View view){
+
+        private void buildAnswersComponents(View view){
         tableLayout = (TableLayout) view.findViewById(R.id.table_layout_id);
         for (int i = 0; i<numOfAnswers; i++){
             TableRow row = buildAnswerRow(i, mQuestion.getAnswers().get(i));
@@ -267,4 +268,7 @@ public class QuestionFragment extends Fragment {
         explanaionRow.addView(explanaionTextView);
         tableLayout.addView(explanaionRow, new TableLayout.LayoutParams(TableLayout.LayoutParams.MATCH_PARENT, TableLayout.LayoutParams.WRAP_CONTENT));
     }
+
+
+
 }

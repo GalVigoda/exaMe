@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.TextView;
 import android.view.ViewGroup;
 import android.widget.Button;
 
@@ -18,6 +19,8 @@ public class ExamOpeningFragment extends Fragment {
     private Exam exam;
     private Button backButton;
     private Button startButton;
+    private TextView tvTitle;
+    private TextView tvTime;
 
     public ExamOpeningFragment() {
         // Required empty public constructor
@@ -34,6 +37,8 @@ public class ExamOpeningFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_exam_opening, container, false);
         startButton = rootView.findViewById(R.id.exam_opening_fragment_start_button);
         backButton = rootView.findViewById(R.id.exam_opening_fragment_back_button);
+        tvTitle = rootView.findViewById(R.id.tvTextTitle);
+        tvTime= rootView.findViewById(R.id.tvTime);
 
         startButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,7 +54,15 @@ public class ExamOpeningFragment extends Fragment {
             }
         });
 
+        setIt();
         return rootView;
+    }
+
+    private void setIt() {
+        tvTitle.setText(exam.getTitle());
+        String TimeForTest=exam.getTimeForTimer()+" Min";
+        tvTime.setText(TimeForTest);
+
     }
 
 }

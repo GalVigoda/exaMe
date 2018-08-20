@@ -1,8 +1,10 @@
 package com.example.galv.exame.activities;
 
 import android.os.Bundle;
+import android.os.CountDownTimer;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.widget.Toast;
 
 import com.example.galv.exame.R;
 import com.example.galv.exame.entities.Answer;
@@ -16,6 +18,16 @@ public class ExamActivity extends CommonBaseActivity{
     private FragmentManager mainFragmentManager;
     private ExamMainFragment examMainFragment;
     private ExamOpeningFragment examOpeningFragment;
+
+    private Exam exam;
+
+    //timer
+
+    private int timeForTimer;
+    long timeForTimerinMiliSecnds;
+
+    private CountDownTimer CountDownTimer;
+    private long timeLeftInMilliSecendes;
 
 
      @Override
@@ -33,6 +45,46 @@ public class ExamActivity extends CommonBaseActivity{
         examOpeningFragment.setExam(getExam());
 
         showExamOpeningFragment();
+        exam = getExam();
+
+    }
+
+    private void initialTimer() {
+
+        timeForTimer = exam.getTimeForTimer();        //
+        timeForTimerinMiliSecnds=changeTimeToMiliSecends(timeForTimer);
+    }
+
+        private void StartTimer() {
+
+            CountDownTimer = new CountDownTimer(timeForTimerinMiliSecnds, 1000) {
+                @Override
+                public void onTick(long long1) {
+                    timeLeftInMilliSecendes = long1;
+                    updateTimer();
+                }
+
+                @Override
+                public void onFinish() {
+                    Toast.makeText(ExamActivity.this, "Time finish", Toast.LENGTH_SHORT).show();
+                }
+            }.start();
+
+            // timeRuning=true;
+        }
+
+
+        public void updateTimer() {
+        int minutes =(int)(timeLeftInMilliSecendes/ 60000) %60;
+        int seconds = (int) (timeLeftInMilliSecendes / 1000) % 60;
+        String timeLeftText;
+        timeLeftText = String.format("%02d:%02d", minutes, seconds);
+        examMainFragment.updateText(timeLeftText);
+    }
+
+
+    private int changeTimeToMiliSecends(int n) {
+         return (n*60000);
     }
 
 
@@ -43,9 +95,13 @@ public class ExamActivity extends CommonBaseActivity{
     }
 
     public void showMainFragment(){
+        initialTimer();
         FragmentTransaction transaction = mainFragmentManager.beginTransaction();
         transaction.replace(R.id.exam_activity_main_fragment, examMainFragment);
         transaction.commit();
+
+        StartTimer();
+
     }
 
     @Override

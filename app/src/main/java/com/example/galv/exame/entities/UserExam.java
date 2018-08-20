@@ -6,6 +6,7 @@ import java.util.List;
 public class UserExam {
     private String examKey;
     private List<UserQuestion> userQuestions;
+    private int grade;
 
     public UserExam() {
         this.examKey = "";
