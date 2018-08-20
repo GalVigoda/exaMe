@@ -7,7 +7,9 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
+
 import com.example.galv.exame.R;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -19,7 +21,6 @@ import com.github.mikephil.charting.highlight.Highlight;
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.util.ArrayList;
-
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -33,6 +34,7 @@ public class statisticFragment extends Fragment {
     private float[]yData2={numberOfPassExams,numberOfFailExams};
     private String [] xData2={"Pass" ,"Fail"};
     private Float sumOfTests;
+    private TextView tvGPA;
     PieChart pieChart;
     PieChart pieChart2;
 
@@ -61,10 +63,10 @@ public class statisticFragment extends Fragment {
 
 
         //for graph number 2 :
-        // numberOfPassExams=((MainActivity)getActivity()).getOldExams().size();
-        // numberOfFailExams=((MainActivity)getActivity()).getOldExams().size();
-        //yData2[0]=numberOfPassExams;
-        //yData2[1]=numberOfFailExams;
+        //numberOfPassExams=((MainActivity)getActivity()).().size();
+       //  numberOfFailExams=((MainActivity)getActivity()).getOldExams().size();
+        yData2[0]=numberOfPassExams;
+        yData2[1]=numberOfFailExams;
     }
 
     private void buildComponents(View view) {
