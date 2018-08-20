@@ -95,6 +95,10 @@ public class MainActivity extends CommonBaseActivity {
         FragmentTransaction.commit();
 
     }
+    public void goToNewExamFragment(){
+        setFragmet(newTestFragment);
+
+    }
 
 
     @Override

@@ -1,7 +1,6 @@
 package com.example.galv.exame.activities;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -55,8 +54,8 @@ public class homeFragment extends Fragment {
     }
 
     private void moveFromFramentToNewActivity() {
-        Intent intent = new Intent(getActivity(), newTestFragment.class);
-        startActivity(intent);
+        ((MainActivity)getActivity()).goToNewExamFragment();
+
     }
 
 

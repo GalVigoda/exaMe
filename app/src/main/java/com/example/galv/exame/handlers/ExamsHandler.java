@@ -6,14 +6,6 @@ import android.support.annotation.Nullable;
 import com.example.galv.exame.activities.CommonBaseActivity;
 import com.example.galv.exame.entities.Exam;
 import com.example.galv.exame.entities.UserExam;
-<<<<<<< HEAD
-=======
-import com.example.galv.exame.entities.UserQuestion;
-import com.google.android.gms.tasks.OnCanceledListener;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
->>>>>>> d13175939cd5a48263020a5d7b914343155b9332
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;

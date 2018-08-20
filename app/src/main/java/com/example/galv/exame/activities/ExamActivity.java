@@ -11,14 +11,9 @@ import android.widget.Toast;
 
 import com.example.galv.exame.R;
 import com.example.galv.exame.entities.Exam;
-<<<<<<< HEAD
-=======
-import com.example.galv.exame.entities.Question;
-import com.example.galv.exame.entities.Tag;
 import com.example.galv.exame.entities.UserExam;
 import com.example.galv.exame.entities.UserQuestion;
 import com.example.galv.exame.handlers.ExamsHandler;
->>>>>>> d13175939cd5a48263020a5d7b914343155b9332
 import com.example.galv.exame.handlers.UpdateFor;
 
 public class ExamActivity extends CommonBaseActivity{

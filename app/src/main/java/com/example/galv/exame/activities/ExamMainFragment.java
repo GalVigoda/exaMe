@@ -132,9 +132,7 @@ public class ExamMainFragment extends Fragment {
 
     public void updateText(String timeLeftText) {
         tvTimeForTimer.setText(timeLeftText);
-<<<<<<< HEAD
 
-=======
     }
 
     public void updateAnswer(String answer, boolean isCorrect){
@@ -152,6 +150,6 @@ public class ExamMainFragment extends Fragment {
         if(isQuestionAnswered.containsValue(NOT_ANS))
             return;
         myActivity.allAnswered(false);
->>>>>>> d13175939cd5a48263020a5d7b914343155b9332
+
     }
 }
