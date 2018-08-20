@@ -12,7 +12,6 @@ import android.widget.FrameLayout;
 
 import com.example.galv.exame.R;
 import com.example.galv.exame.entities.Exam;
-import com.example.galv.exame.entities.UserExam;
 import com.example.galv.exame.handlers.ExamsHandler;
 import com.example.galv.exame.handlers.Logger;
 import com.example.galv.exame.handlers.UpdateFor;
@@ -104,6 +103,11 @@ public class MainActivity extends CommonBaseActivity {
         switch (updateFor){
             case UPDATE_FOR_NEW_EXAMS:
                 newTestFragment.notifyOnDataChange();
+                homeFragment.UpdateTheUi();
+                break;
+            case UPDATE_FOR_ALL:
+                homeFragment.UpdateTheUi();
+                break;
         }
     }
 

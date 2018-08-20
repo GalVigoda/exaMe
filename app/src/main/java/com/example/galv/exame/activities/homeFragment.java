@@ -81,9 +81,29 @@ public class homeFragment extends Fragment {
                     .into(imageView);
             userEmail.setText(user.getEmail());
             userName.setText(user.getDisplayName());
-            // userExtra.setText(user.get());
+            int numberOfTests=(((MainActivity)getActivity()).getNewExams().size());
+            numberOfNewTests.setText(""+numberOfTests);
+
+            UpdateTheUi();
         }
         //  FirebaseUser user = ((CommonBaseActivity)getActivity()).getUser();
+
+        public void UpdateTheUi(){
+            int numberOfTests=(((MainActivity)getActivity()).getNewExams().size());
+            numberOfNewTests.setText(""+numberOfTests);
+
+        }
+
+//    Query newExamsQuery = mFirebaseDatabase.child("userNewExams").child(mUId);
+//        newExamsQuery.addChildEventListener(new ChildEventListener() {
+//        @Override
+//        public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
+//            UserExam userExam = dataSnapshot.getValue(UserExam.class);
+//            Logger.ReportInfo("ExamsHandler", "new user exam added, id: " + userExam.getExamKey());
+//            newExams.add(userExam.getExamKey());
+//            context.UpdateUi(UpdateFor.UPDATE_FOR_NEW_EXAMS);
+//            GetExamByKey(userExam.getExamKey());
+       // }
 
 
 

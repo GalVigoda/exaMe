@@ -113,6 +113,6 @@ public class ExamMainFragment extends Fragment {
 
     public void updateText(String timeLeftText) {
         tvTimeForTimer.setText(timeLeftText);
-        int stam =1;
+
     }
 }

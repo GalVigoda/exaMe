@@ -27,11 +27,12 @@ public class statisticFragment extends Fragment {
 
 
     //private static String Tag="statisticActivity";
-    private float numberOfWaittingExams=7,numberOfdoneExams=5,numberOfPassExams=3,numberOfFailExams=2;
+    private float numberOfWaittingExams,numberOfdoneExams,numberOfPassExams=3,numberOfFailExams=2;
     private float[]yData={numberOfWaittingExams,numberOfdoneExams};
     private String [] xData={"Waitting" ,"Done"};
     private float[]yData2={numberOfPassExams,numberOfFailExams};
     private String [] xData2={"Pass" ,"Fail"};
+    private Float sumOfTests;
     PieChart pieChart;
     PieChart pieChart2;
 
@@ -45,16 +46,33 @@ public class statisticFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistic1, container, false);
+        getdetailsExams();
         buildComponents(view);
 
         return view;
+    }
+
+    private void getdetailsExams() {
+        numberOfWaittingExams=((MainActivity)getActivity()).getNewExams().size();
+        numberOfdoneExams=((MainActivity)getActivity()).getOldExams().size();
+        sumOfTests=(numberOfWaittingExams+numberOfdoneExams);
+        yData[0]=numberOfWaittingExams;
+        yData[1]=numberOfdoneExams;
+
+
+        //for graph number 2 :
+        // numberOfPassExams=((MainActivity)getActivity()).getOldExams().size();
+        // numberOfFailExams=((MainActivity)getActivity()).getOldExams().size();
+        //yData2[0]=numberOfPassExams;
+        //yData2[1]=numberOfFailExams;
     }
 
     private void buildComponents(View view) {
         pieChart=view.findViewById(R.id.idPieChart);
 
         pieChart.setDescription("Distribution of Exams");
-        pieChart.setCenterText("7 Tests"); //change>>  get number Of Tests
+
+        pieChart.setCenterText("Total "+sumOfTests+"\nExams"); //change>>  get number Of Tests
         pieChart.setCenterTextSize(15);
         pieChart.setHoleRadius(25f);
         pieChart.setRotationEnabled(true);
@@ -86,7 +104,7 @@ public class statisticFragment extends Fragment {
         for (int i = 0; i < yData2.length; i++) {
             YEntries.add(new PieEntry(yData2[i], i));
         }
-        PieDataSet PieDataSet = new PieDataSet(YEntries, "testtss213s");
+        PieDataSet PieDataSet = new PieDataSet(YEntries, "Tests");
         PieDataSet.setSliceSpace(6);
         PieDataSet.setValueTextSize(15);
 

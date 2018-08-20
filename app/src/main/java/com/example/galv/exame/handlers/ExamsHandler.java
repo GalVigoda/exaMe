@@ -4,14 +4,8 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 
 import com.example.galv.exame.activities.CommonBaseActivity;
-import com.example.galv.exame.entities.Answer;
 import com.example.galv.exame.entities.Exam;
-import com.example.galv.exame.entities.Question;
 import com.example.galv.exame.entities.UserExam;
-import com.google.android.gms.tasks.OnCanceledListener;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -59,9 +53,10 @@ public class ExamsHandler {
             public void onChildAdded(@NonNull DataSnapshot dataSnapshot, @Nullable String s) {
                 UserExam userExam = dataSnapshot.getValue(UserExam.class);
                 Logger.ReportInfo("ExamsHandler", "new user exam added, id: " + userExam.getExamKey());
+
+                GetExamByKey(userExam.getExamKey());
                 newExams.add(userExam.getExamKey());
                 context.UpdateUi(UpdateFor.UPDATE_FOR_NEW_EXAMS);
-                GetExamByKey(userExam.getExamKey());
             }
 
             @Override

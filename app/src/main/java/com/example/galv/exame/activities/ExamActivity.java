@@ -8,10 +8,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.widget.Toast;
 
 import com.example.galv.exame.R;
-import com.example.galv.exame.entities.Answer;
 import com.example.galv.exame.entities.Exam;
-import com.example.galv.exame.entities.Question;
-import com.example.galv.exame.entities.Tag;
 import com.example.galv.exame.handlers.UpdateFor;
 
 public class ExamActivity extends CommonBaseActivity{
