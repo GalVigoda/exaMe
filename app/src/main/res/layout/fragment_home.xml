@@ -100,6 +100,16 @@
             app:layout_constraintStart_toStartOf="@+id/imageView2"
             app:layout_constraintTop_toTopOf="@+id/imageView2" />
 
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="176dp"
+            android:layout_height="118dp"
+            android:layout_marginStart="148dp"
+            android:layout_marginTop="152dp"
+            android:src="@drawable/grade"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
     </android.support.constraint.ConstraintLayout>
 

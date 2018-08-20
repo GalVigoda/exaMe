@@ -46,6 +46,7 @@ public class statisticFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistic1, container, false);
         buildComponents(view);
+
         return view;
     }
 
