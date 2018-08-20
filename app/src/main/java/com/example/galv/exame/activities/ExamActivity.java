@@ -35,20 +35,18 @@ public class ExamActivity extends CommonBaseActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
          Intent i = getIntent();
-         Exam exam = (Exam)i.getSerializableExtra("EXAM_DETAILS");
+         this.exam = (Exam)i.getSerializableExtra("EXAM_DETAILS");
         //setContentView(R.layout.new_exam_fragment);
         setContentView(R.layout.activity_exam);
          mainFragmentManager = getSupportFragmentManager();
 
         examMainFragment = new ExamMainFragment();
-        examMainFragment.setExam(exam);
+        examMainFragment.setExam(getExam());
 
         examOpeningFragment = new ExamOpeningFragment();
-        examOpeningFragment.setExam(exam);
+        examOpeningFragment.setExam(getExam());
 
         showExamOpeningFragment();
-        exam = getExam();
-
     }
 
     private void initialTimer() {
@@ -121,6 +119,10 @@ public class ExamActivity extends CommonBaseActivity{
          }
     }
 
+    public Exam getExam() {
+        return this.exam;
+    }
+    /*
     private Exam getExam (){
         Exam e1 = new Exam("Exam no.1 - Colors", 20);
         Question q1 = new Question("What is the color of the Sun?", Question.QUESTION_TYPE_AMERICAN, 1);
@@ -190,4 +192,5 @@ public class ExamActivity extends CommonBaseActivity{
         e1.addQuestion(q6);
         return e1;
     }
+    */
 }
