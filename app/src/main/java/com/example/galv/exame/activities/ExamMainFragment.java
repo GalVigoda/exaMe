@@ -92,7 +92,7 @@ public class ExamMainFragment extends Fragment {
 
         int i=1;
         for (Question q : questions){
-            QuestionFragment f = new QuestionFragment();
+            QuestionFragment f = q.getType() == Question.QUESTION_TYPE_SORTING ? new SortingQuestionFragment() : new QuestionFragment();
             f.setQuestion(q);
             f.setContext(this);
             questionFragmentsMap.put(i, f);

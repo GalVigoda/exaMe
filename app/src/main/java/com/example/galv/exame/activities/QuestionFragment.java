@@ -30,13 +30,13 @@ public class QuestionFragment extends Fragment {
     private static final int NO_ANSREW_SELECTED = -1;
 
     private Question mQuestion;
-    private String answer;
-    private boolean answered;
+    protected String answer;
+    protected boolean answered;
     private boolean approved;
     private boolean isCorrectAnswer;
     private int numOfAnswers;
     private int lastSelectedAnswer;
-    private Map<Integer, AnswerButton> answerButtonMap;
+    protected Map<Integer, AnswerButton> answerButtonMap;
     private Map<Integer, TextView> answerTextMap;
 
     private TextView text_view_qeustoin_text;
@@ -107,7 +107,7 @@ public class QuestionFragment extends Fragment {
     }
 
 
-        private void buildAnswersComponents(View view){
+        protected void buildAnswersComponents(View view){
         tableLayout = (TableLayout) view.findViewById(R.id.table_layout_id);
         for (int i = 0; i<numOfAnswers; i++){
             TableRow row = buildAnswerRow(i, mQuestion.getAnswers().get(i));
@@ -165,7 +165,7 @@ public class QuestionFragment extends Fragment {
         this.mQuestion = question;
     }
 
-    private void buttonClicked(AnswerButton button){
+    protected void buttonClicked(AnswerButton button){
         button.changeState();
         if (button.isSelected())
             setAnswerSelected(button.getId());
@@ -173,7 +173,7 @@ public class QuestionFragment extends Fragment {
             setAnswerUnSelected(button.getId());
     }
 
-    private void setAnswerSelected(int index){
+    protected void setAnswerSelected(int index){
         if (lastSelectedAnswer != NO_ANSREW_SELECTED && lastSelectedAnswer != index)
             setAnswerUnSelected(lastSelectedAnswer);
         lastSelectedAnswer = index;
@@ -185,7 +185,7 @@ public class QuestionFragment extends Fragment {
         updateAnswer(a);
     }
 
-    private void setAnswerUnSelected(int index){
+    protected void setAnswerUnSelected(int index){
         AnswerButton button = answerButtonMap.get(index);
         if (button.isSelected())
             button.changeState();
@@ -195,7 +195,7 @@ public class QuestionFragment extends Fragment {
         checkNeedToResetAnswer();
     }
 
-    private void checkAnswer(){
+    protected void checkAnswer(){
         isCorrectAnswer = this.answer.equals(mQuestion.getCorrectAnswer());
     }
 
@@ -215,7 +215,7 @@ public class QuestionFragment extends Fragment {
         isCorrectAnswer = false;
     }
 
-    private void initLastState(){
+    protected void initLastState(){
         if (answered || lastSelectedAnswer != NO_ANSREW_SELECTED)
             setAnswerSelected(lastSelectedAnswer);
         if (answered)
@@ -228,7 +228,7 @@ public class QuestionFragment extends Fragment {
         if (!approved && !fromButton)
             return;
 
-        answerButtonMap.get(lastSelectedAnswer).setApproved(isCorrectAnswer);
+        updateSelectedAnsBtn();
 
         for (AnswerButton ab :answerButtonMap.values())
             ab.setEnabled(false);
@@ -239,6 +239,10 @@ public class QuestionFragment extends Fragment {
         approved = true;
         if (fromButton)
             myParent.updateAnswer(this.answer, isCorrectAnswer);
+    }
+
+    protected void updateSelectedAnsBtn(){
+        answerButtonMap.get(lastSelectedAnswer).setApproved(isCorrectAnswer);
     }
 
     public void showExplanation(){
