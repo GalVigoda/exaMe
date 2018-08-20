@@ -51,5 +51,10 @@
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
+    <string name="finish_exam">Do you want to finish the exam?</string>
+    <string name="exam_done">All of the exam questions have been answered.\nYour grade is: </string>
+    <string name="end_of_time">Your time is out.\Your grade is: </string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="ok">OK</string>
 </resources>

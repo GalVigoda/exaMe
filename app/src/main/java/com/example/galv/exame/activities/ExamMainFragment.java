@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.example.galv.exame.R;
 import com.example.galv.exame.entities.Exam;
 import com.example.galv.exame.entities.Question;
+import com.example.galv.exame.entities.UserQuestion;
 import com.example.galv.exame.handlers.Logger;
 
 import java.util.HashMap;
@@ -25,21 +26,35 @@ import java.util.List;
 import java.util.Map;
 
 public class ExamMainFragment extends Fragment {
+    private static final int                NOT_ANS         = -1;
+    private static final int                ANS_WRONG       = 0;
+    private static final int                ANS_CORRECT     = 1;
 
     private FragmentManager                 fragmentManager;
     private Map<Integer, QuestionFragment>  questionFragmentsMap;
     private Map<Integer, Button>            buttonsMap;
     private HorizontalScrollView            buttonsScrollView;
     private Exam                            exam;
-
+    private Map<Integer, Integer>           isQuestionAnswered;
     private int                             currentQuestionNum;
     private TextView tvTimeForTimer;
+
+    private float grade;
+    private float questionScore;
+
+    private ExamActivity myActivity;
 
     public ExamMainFragment() {
     }
 
     public void setExam(Exam exam) {
         this.exam = exam;
+        grade = 0;
+        questionScore = 100 / exam.getQuestions().size();
+    }
+
+    public void setMyActivity(ExamActivity myActivity) {
+        this.myActivity = myActivity;
     }
 
     @Override
@@ -47,6 +62,7 @@ public class ExamMainFragment extends Fragment {
         super.onCreate(savedInstanceState);
         questionFragmentsMap    = new HashMap<>();
         buttonsMap              = new HashMap<>();
+        isQuestionAnswered      = new HashMap<>();
     }
 
     @Override
@@ -78,8 +94,9 @@ public class ExamMainFragment extends Fragment {
         for (Question q : questions){
             QuestionFragment f = new QuestionFragment();
             f.setQuestion(q);
+            f.setContext(this);
             questionFragmentsMap.put(i, f);
-
+            isQuestionAnswered.put(i,NOT_ANS);
             Button b = new Button(getActivity());
             b.setText(Integer.toString(i));
             b.setId(i);
@@ -103,8 +120,10 @@ public class ExamMainFragment extends Fragment {
         QuestionFragment qf = questionFragmentsMap.get(index);
         if (qf == null)
             return;
-        buttonsMap.get(currentQuestionNum).setBackgroundResource(R.drawable.ic_action_question_btn_regular);
-        buttonsMap.get(index).setBackgroundResource(R.drawable.ic_action_question_btn_pressed);
+        if (isQuestionAnswered.get(currentQuestionNum) == NOT_ANS)
+            buttonsMap.get(currentQuestionNum).setBackgroundResource(R.drawable.ic_action_question_btn_regular);
+        if (isQuestionAnswered.get(index) == NOT_ANS)
+            buttonsMap.get(index).setBackgroundResource(R.drawable.ic_action_question_btn_pressed);
         currentQuestionNum = index;
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.exam_main_question_frame, qf);
@@ -113,6 +132,22 @@ public class ExamMainFragment extends Fragment {
 
     public void updateText(String timeLeftText) {
         tvTimeForTimer.setText(timeLeftText);
-        int stam =1;
+    }
+
+    public void updateAnswer(String answer, boolean isCorrect){
+        buttonsMap.get(currentQuestionNum).setBackgroundResource(isCorrect ?
+                                                                R.drawable.ic_action_answer_correct_btn
+                                                                : R.drawable.ic_action_answer_wrong_btn);
+        isQuestionAnswered.put(currentQuestionNum, isCorrect ? ANS_CORRECT : ANS_WRONG);
+        this.grade += isCorrect ? questionScore : 0;
+        myActivity.updateAnswer(new UserQuestion(currentQuestionNum, answer));
+        myActivity.updateGrade(this.grade);
+        checkIfDone();
+    }
+
+    public void checkIfDone(){
+        if(isQuestionAnswered.containsValue(NOT_ANS))
+            return;
+        myActivity.allAnswered(false);
     }
 }

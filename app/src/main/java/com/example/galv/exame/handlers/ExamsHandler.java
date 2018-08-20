@@ -8,6 +8,7 @@ import com.example.galv.exame.entities.Answer;
 import com.example.galv.exame.entities.Exam;
 import com.example.galv.exame.entities.Question;
 import com.example.galv.exame.entities.UserExam;
+import com.example.galv.exame.entities.UserQuestion;
 import com.google.android.gms.tasks.OnCanceledListener;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,14 +29,14 @@ import java.util.Map;
 import java.util.Set;
 
 public class ExamsHandler {
-
-    private CommonBaseActivity context;
-    private String mUId;
-    private DatabaseHandler mDatabaseHandler;
-    private Set<String> newExams;
-    private Map<String, UserExam> userExams;
-    private Map<String, Exam> examsData;
-    private DatabaseReference mFirebaseDatabase;
+    private static final int            PASS_GARADE = 60;
+    private CommonBaseActivity          context;
+    private String                      mUId;
+    private DatabaseHandler             mDatabaseHandler;
+    private Set<String>                 newExams;
+    private Map<String, UserExam>       userExams;
+    private Map<String, Exam>           examsData;
+    private DatabaseReference           mFirebaseDatabase;
 
     public ExamsHandler(String uId,CommonBaseActivity context) {
         this.mUId = uId;
@@ -260,5 +261,31 @@ public class ExamsHandler {
 
     public void SaveUserNewExam(final UserExam exam){
         mFirebaseDatabase.child("userNewExams").child(mUId).push().setValue(exam);
+    }
+
+    public int getNumOfPassed(){
+        int count = 0;
+        for (UserExam e: userExams.values()){
+            if(e.getGrade() >= PASS_GARADE)
+                count++;
+        }
+        return count;
+    }
+
+    public int getNumOfFailed(){
+        int count = 0;
+        for (UserExam e: userExams.values()){
+            if(e.getGrade() < PASS_GARADE)
+                count++;
+        }
+        return count;
+    }
+
+    public float getNumOfAverage(){
+        float ans = 0;
+        for (UserExam e: userExams.values()){
+            ans += e.getGrade();
+        }
+        return ans == 0 || userExams.size() == 0 ? 0 : ans/userExams.size();
     }
 }
