@@ -19,6 +19,7 @@ public class TestingsActivity extends CommonBaseActivity {
     private Button mCreateExamsBtn;
     private Button mCreateNewExamsForUserBtn;
     private String lastExamKey;
+    int count;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,11 +33,11 @@ public class TestingsActivity extends CommonBaseActivity {
                 createExams();
             }
         });
-
+        count = 0;
     }
 
     private void createExams (){
-        Exam e1 = new Exam("Exam no.1 - Colors", 20);
+        Exam e1 = new Exam("Exam no." + count + " - Colors", 20);
         Question q1 = new Question("What is the color of the Sun?", Question.QUESTION_TYPE_AMERICAN, 1);
         q1.addAnswer(new Answer(1, "Red", 1));
         q1.addAnswer(new Answer(2, "White", 2));
@@ -105,6 +106,7 @@ public class TestingsActivity extends CommonBaseActivity {
 
         lastExamKey = mExamsHandler.SaveExam(e1);
         createNewUserExam();
+        count++;
     }
 
     private void createNewUserExam (){

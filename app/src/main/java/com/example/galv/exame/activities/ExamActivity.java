@@ -1,5 +1,6 @@
 package com.example.galv.exame.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -21,16 +22,17 @@ public class ExamActivity extends CommonBaseActivity{
      @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+         Intent i = getIntent();
+         Exam exam = (Exam)i.getSerializableExtra("EXAM_DETAILS");
         //setContentView(R.layout.new_exam_fragment);
         setContentView(R.layout.activity_exam);
          mainFragmentManager = getSupportFragmentManager();
 
         examMainFragment = new ExamMainFragment();
-        examMainFragment.setExam(getExam());
+        examMainFragment.setExam(exam);
 
         examOpeningFragment = new ExamOpeningFragment();
-        examOpeningFragment.setExam(getExam());
+        examOpeningFragment.setExam(exam);
 
         showExamOpeningFragment();
     }

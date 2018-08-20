@@ -1,6 +1,8 @@
 package com.example.galv.exame.entities;
 
-public class Answer {
+import java.io.Serializable;
+
+public class Answer implements Serializable {
 
     private int code;
     private String answerText;

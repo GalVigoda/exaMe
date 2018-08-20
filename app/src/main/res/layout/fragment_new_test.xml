@@ -23,11 +23,20 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/startNewTest"
-        android:layout_width="167dp"
-        android:layout_height="98dp"
-        android:layout_marginTop="150dp"
-        android:text="start- only for check" />
+    <!--<Button-->
+        <!--android:id="@+id/startNewTest"-->
+        <!--android:layout_width="167dp"-->
+        <!--android:layout_height="98dp"-->
+        <!--android:layout_marginTop="350dp"-->
+        <!--android:text="start- only for check" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_exams_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10pt"
+        android:layout_gravity="center"
+        >
+    </android.support.v7.widget.RecyclerView>
 
 </FrameLayout>
