@@ -27,13 +27,12 @@
 
             </com.github.mikephil.charting.charts.PieChart>
 
-    <com.github.mikephil.charting.charts.PieChart
-            android:layout_marginTop="50dp"
-            android:id="@+id/idPieChart2"
-            android:layout_width="match_parent"
-            android:layout_height="350dp"></com.github.mikephil.charting.charts.PieChart>
 
-
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/idPieChart2"
+                android:layout_width="match_parent"
+                android:layout_height="350dp"
+                android:layout_marginTop="50dp"></com.github.mikephil.charting.charts.PieChart>
 
             <Button
                 android:id="@+id/gradeGpa"

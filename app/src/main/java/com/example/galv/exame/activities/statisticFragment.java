@@ -9,7 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.widget.Button;
 import com.example.galv.exame.R;
 import com.github.mikephil.charting.charts.PieChart;
 import com.github.mikephil.charting.components.Legend;
@@ -48,6 +48,7 @@ public class statisticFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_statistic1, container, false);
+        tvGPA= (Button)view.findViewById(R.id.gradeGpa);
         getdetailsExams();
         buildComponents(view);
 
@@ -63,11 +64,13 @@ public class statisticFragment extends Fragment {
 
 
         //for graph number 2 :
-        //numberOfPassExams=((MainActivity)getActivity()).().size();
-       //  numberOfFailExams=((MainActivity)getActivity()).getOldExams().size();
+        numberOfPassExams=((MainActivity)getActivity()).getNumOfPassed();
+        numberOfFailExams=((MainActivity)getActivity()).getNumOfFailed();
         yData2[0]=numberOfPassExams;
         yData2[1]=numberOfFailExams;
-    }
+        float avarage=((MainActivity)getActivity()).getNumOfAverage();
+        tvGPA.setText(Float.toString(avarage));
+}
 
     private void buildComponents(View view) {
         pieChart=view.findViewById(R.id.idPieChart);
@@ -208,9 +211,4 @@ public class statisticFragment extends Fragment {
         });
     }
 
-    private void doToast() {
-        //if
-
-
-    }
 }
