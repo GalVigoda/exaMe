@@ -175,7 +175,17 @@ public class ExamsHandler {
     }
 
     //get user new exams
-    public List<String> GetUserNewExams(){
+    public List<Exam> GetUserNewExams(){
+        List<Exam> ret = new ArrayList<>();
+        for (String s : newExams){
+            Exam e = examsData.get(s);
+            if (e!=null)
+                ret.add(e);
+        }
+        return ret;
+    }
+
+    public List<String> getNewExamsKeys() {
         return newExams;
     }
 
