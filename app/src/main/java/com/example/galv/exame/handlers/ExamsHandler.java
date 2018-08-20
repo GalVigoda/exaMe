@@ -8,6 +8,10 @@ import com.example.galv.exame.entities.Answer;
 import com.example.galv.exame.entities.Exam;
 import com.example.galv.exame.entities.Question;
 import com.example.galv.exame.entities.UserExam;
+import com.google.android.gms.tasks.OnCanceledListener;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -18,15 +22,17 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class ExamsHandler {
 
     private CommonBaseActivity context;
     private String mUId;
     private DatabaseHandler mDatabaseHandler;
-    private List<String> newExams;
+    private Set<String> newExams;
     private Map<String, UserExam> userExams;
     private Map<String, Exam> examsData;
     private DatabaseReference mFirebaseDatabase;
@@ -34,7 +40,7 @@ public class ExamsHandler {
     public ExamsHandler(String uId,CommonBaseActivity context) {
         this.mUId = uId;
         this.context = context;
-        this.newExams = new ArrayList<>();
+        this.newExams = new HashSet<>();
         this.userExams = new HashMap<>();
         this.mDatabaseHandler = new DatabaseHandler();
         this.examsData = new HashMap<>();
@@ -130,7 +136,7 @@ public class ExamsHandler {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                Logger.ReportInfo("GetUserNewExamsFromDb", "got error for user new exams");
             }
         });
     }
@@ -185,17 +191,20 @@ public class ExamsHandler {
         return ret;
     }
 
-    public List<String> getNewExamsKeys() {
-        return newExams;
-    }
-
     public Exam GetUserNewExamByKey(String key){
         return examsData.get(key);
     }
 
     //get user old exams
-    public List<UserExam> GetUserOldExams(){
-        return new ArrayList<>(userExams.values());
+    public List<Exam> GetUserOldExams(){
+        List<UserExam> list = new ArrayList<>(userExams.values());
+        List<Exam> ret = new ArrayList<>();
+        for (UserExam e: list){
+            Exam exam = examsData.get(e.getExamKey());
+            if (exam != null)
+                ret.add(exam);
+        }
+        return ret;
     }
 
     //save user exam

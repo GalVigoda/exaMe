@@ -11,9 +11,13 @@ import android.view.MenuItem;
 import android.widget.FrameLayout;
 
 import com.example.galv.exame.R;
+import com.example.galv.exame.entities.Exam;
+import com.example.galv.exame.entities.UserExam;
 import com.example.galv.exame.handlers.ExamsHandler;
 import com.example.galv.exame.handlers.Logger;
 import com.example.galv.exame.handlers.UpdateFor;
+
+import java.util.List;
 
 public class MainActivity extends CommonBaseActivity {
 
@@ -97,6 +101,19 @@ public class MainActivity extends CommonBaseActivity {
     @Override
     public void UpdateUi(UpdateFor updateFor){
         Logger.ReportError("TestingsActivity.UpdateUi:", "Got Update for: " + updateFor.name() );
-
+        switch (updateFor){
+            case UPDATE_FOR_NEW_EXAMS:
+                newTestFragment.notifyOnDataChange();
+        }
     }
+
+    public List<Exam> getNewExams(){
+        return mExamsHandler.GetUserNewExams();
+    }
+
+    public List<Exam> getOldExams(){
+        return mExamsHandler.GetUserOldExams();
+    }
+
+
 }

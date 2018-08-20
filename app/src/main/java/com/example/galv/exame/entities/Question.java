@@ -1,9 +1,10 @@
 package com.example.galv.exame.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Question {
+public class Question implements Serializable {
     public static final int QUESTION_TYPE_AMERICAN = 1;
     public static final int QUESTION_TYPE_MISSING_WORDS = 2;
     public static final int QUESTION_TYPE_SORTING = 3;
