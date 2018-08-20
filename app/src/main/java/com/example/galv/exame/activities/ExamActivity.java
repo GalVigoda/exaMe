@@ -1,5 +1,7 @@
 package com.example.galv.exame.activities;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -9,6 +11,14 @@ import android.widget.Toast;
 
 import com.example.galv.exame.R;
 import com.example.galv.exame.entities.Exam;
+<<<<<<< HEAD
+=======
+import com.example.galv.exame.entities.Question;
+import com.example.galv.exame.entities.Tag;
+import com.example.galv.exame.entities.UserExam;
+import com.example.galv.exame.entities.UserQuestion;
+import com.example.galv.exame.handlers.ExamsHandler;
+>>>>>>> d13175939cd5a48263020a5d7b914343155b9332
 import com.example.galv.exame.handlers.UpdateFor;
 
 public class ExamActivity extends CommonBaseActivity{
@@ -18,6 +28,7 @@ public class ExamActivity extends CommonBaseActivity{
     private ExamOpeningFragment examOpeningFragment;
 
     private Exam exam;
+    private UserExam userExam;
 
     //timer
 
@@ -33,12 +44,15 @@ public class ExamActivity extends CommonBaseActivity{
         super.onCreate(savedInstanceState);
          Intent i = getIntent();
          this.exam = (Exam)i.getSerializableExtra("EXAM_DETAILS");
+         this.userExam = new UserExam(exam.getKey());
+
         //setContentView(R.layout.new_exam_fragment);
         setContentView(R.layout.activity_exam);
          mainFragmentManager = getSupportFragmentManager();
 
         examMainFragment = new ExamMainFragment();
         examMainFragment.setExam(getExam());
+        examMainFragment.setMyActivity(this);
 
         examOpeningFragment = new ExamOpeningFragment();
         examOpeningFragment.setExam(getExam());
@@ -64,6 +78,7 @@ public class ExamActivity extends CommonBaseActivity{
                 @Override
                 public void onFinish() {
                     Toast.makeText(ExamActivity.this, "Time finish", Toast.LENGTH_SHORT).show();
+                    allAnswered(true);
                 }
             }.start();
 
@@ -190,4 +205,70 @@ public class ExamActivity extends CommonBaseActivity{
         return e1;
     }
     */
+
+    public void updateAnswer(UserQuestion userQuestion){
+        this.userExam.addQuestion(userQuestion);
+    }
+
+    public void updateGrade(float newGrade){
+        this.userExam.setGrade(newGrade);
+    }
+
+    private void saveUserExam(){
+        ExamsHandler handler = new ExamsHandler(getUserId(), this);
+        handler.SaveUserExam(this.userExam);
+    }
+
+    @Override
+    public void onBackPressed() {
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage(getString(R.string.finish_exam));
+        builder1.setCancelable(true);
+
+        builder1.setPositiveButton(
+                getString(R.string.yes),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        saveAndExit();
+                    }
+                });
+
+        builder1.setNegativeButton(
+                getString(R.string.no),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
+    }
+
+    private void saveAndExit(){
+        saveUserExam();
+        finish();
+    }
+
+    public void allAnswered(boolean isEndOfTime){
+        AlertDialog.Builder builder1 = new AlertDialog.Builder(this);
+        builder1.setMessage( (isEndOfTime ? getString(R.string.end_of_time)
+                : getString(R.string.exam_done) )+ this.userExam.getGrade());
+        builder1.setCancelable(false);
+
+        builder1.setPositiveButton(
+                getString(R.string.ok),
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        dialog.cancel();
+                        saveAndExit();
+                    }
+                });
+
+        AlertDialog alert11 = builder1.create();
+        alert11.show();
+
+    }
 }

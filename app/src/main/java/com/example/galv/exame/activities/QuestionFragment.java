@@ -1,6 +1,7 @@
 package com.example.galv.exame.activities;
 
 
+import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -31,6 +32,7 @@ public class QuestionFragment extends Fragment {
     private Question mQuestion;
     private String answer;
     private boolean answered;
+    private boolean approved;
     private boolean isCorrectAnswer;
     private int numOfAnswers;
     private int lastSelectedAnswer;
@@ -48,6 +50,7 @@ public class QuestionFragment extends Fragment {
     private int approvedCorrectResource;
     private int approvedWrongResource;
 
+    private ExamMainFragment myParent;
 
     public QuestionFragment() {
         // Required empty public constructor
@@ -58,9 +61,12 @@ public class QuestionFragment extends Fragment {
         approvedWrongResource   = R.drawable.ic_action_answer_wrong_btn;
         answerButtonMap = new HashMap<>();
         answerTextMap = new HashMap<>();
-
+        approved = false;
     }
 
+    public void setContext(ExamMainFragment myParent) {
+        this.myParent = myParent;
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -113,7 +119,7 @@ public class QuestionFragment extends Fragment {
         approveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                approveAnswer();
+                approveAnswer(true);
             }
         });
         TableRow.LayoutParams params = new TableRow.LayoutParams();
@@ -213,11 +219,13 @@ public class QuestionFragment extends Fragment {
         if (answered || lastSelectedAnswer != NO_ANSREW_SELECTED)
             setAnswerSelected(lastSelectedAnswer);
         if (answered)
-            approveAnswer();
+            approveAnswer(false);
     }
 
-    public void approveAnswer(){
+    public void approveAnswer(boolean fromButton){
         if (!answered)
+            return;
+        if (!approved && !fromButton)
             return;
 
         answerButtonMap.get(lastSelectedAnswer).setApproved(isCorrectAnswer);
@@ -228,6 +236,9 @@ public class QuestionFragment extends Fragment {
         approveButton.setEnabled(false);
         showExplanation();
         showCorrectAnswer();
+        approved = true;
+        if (fromButton)
+            myParent.updateAnswer(this.answer, isCorrectAnswer);
     }
 
     public void showExplanation(){
