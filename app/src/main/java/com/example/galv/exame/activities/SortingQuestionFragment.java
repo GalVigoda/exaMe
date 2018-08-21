@@ -75,19 +75,6 @@ public class SortingQuestionFragment extends QuestionFragment {
     }
 
     protected void initLastState(){
-//        Stack<AnswerButton> temp = new Stack<>();
-//        while(!buttonsStack.empty()){
-//            temp.push(buttonsStack.pop());
-//        }
-//        StringBuffer sb = new StringBuffer();
-//        currIndex = 1;
-//        while(!temp.empty()){
-//            AnswerButton btn = temp.pop();
-//            btn.setText(Integer.toString(currIndex));
-//            btn.changeState();
-//            buttonsStack.push(btn);
-//            currIndex++;
-//        }
         if (answered)
             approveAnswer(false);
     }

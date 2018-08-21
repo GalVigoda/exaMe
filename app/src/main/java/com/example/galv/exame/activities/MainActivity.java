@@ -136,4 +136,9 @@ public class MainActivity extends CommonBaseActivity {
         return mExamsHandler.getNumOfAverage();
     }
 
+    @Override
+    public void onBackPressed() {
+        finishAndRemoveTask();
+        System.exit(0);
+    }
 }
